@@ -3,7 +3,7 @@
 
 import Square from "./Square";
 
-const Board = ({square, handleClick}) => {
+const Board = ({ square, handleClick }) => {
   const renderSquare = (position) => (
     <Square value={square[position]} onClick={() => handleClick(position)} />
   );
