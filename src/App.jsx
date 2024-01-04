@@ -95,6 +95,14 @@ function App() {
     setCurrentMove(0);
   }
 
+  function changeMode() {
+    setHistory(NEW_GAME);
+    setCurrentMove(0);
+    setIsComputer(false);
+    setIsComputerTurn(false);
+    setIsGameStart(false);
+  }
+
   return (
     <div className="app">
       <h1>
@@ -113,13 +121,22 @@ function App() {
             handleClick={handleClick}
             winnerList={winnerList}
           />
-          <button
-            type="button"
-            className={`btn-reset ${currentMove > 0 ? "active" : ""}`}
-            onClick={resetGame}
-          >
-            Start New Game
-          </button>
+          <div style={{ display: "flex", gap: "20px" }}>
+            <button
+              type="button"
+              className={`btn-reset ${currentMove > 0 ? "active" : ""}`}
+              onClick={resetGame}
+            >
+              Start New Game
+            </button>
+            <button
+              type="button"
+              className={`btn-reset ${currentMove > 0 ? "active" : ""}`}
+              onClick={changeMode}
+            >
+              Select New Mode
+            </button>
+          </div>
           <History history={history} handleMove={handleMove} />
         </>
       ) : (
