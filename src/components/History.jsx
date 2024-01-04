@@ -1,6 +1,7 @@
 const History = ({ history, handleMove }) => {
   return (
     <div>
+      <h2>Current History</h2>
       <ul>
         {history.map((_, index) => (
           <li key={index} onClick={() => handleMove(index)}>

@@ -97,6 +97,10 @@ function App() {
 
   return (
     <div className="app">
+      <h1>
+        <span className="text-orange">Tic</span> Tac{" "}
+        <span className="text-green">Toe</span>
+      </h1>
       {isGameStart ? (
         <>
           <StatusMessage
@@ -120,7 +124,7 @@ function App() {
         </>
       ) : (
         <>
-          {/* <Choice /> */}
+          <Choice />
           <Button handlePlayer={handlePlayer} />
         </>
       )}
