@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-const StatusMessage = ({ winner, squares, isXNext }) => {
+const StatusMessage = ({ winner, currentGameState }) => {
+  const {squares, isXCurrent} = currentGameState;
   const noMovesLeft = squares.every((squareVal) => squareVal !== null);
-  console.log(isXNext);
   function renderStatusMessage() {
     if (winner) {
       return (
@@ -23,15 +23,15 @@ const StatusMessage = ({ winner, squares, isXNext }) => {
     } else {
       return (
         <>
-          Next player is{" "}
-          <span className={isXNext ? "text-green" : "text-orange"}>
-            {isXNext ? "X" : "O"}
+          Current player is{" "}
+          <span className={isXCurrent ? "text-green" : "text-orange"}>
+            {isXCurrent ? "X" : "O"}
           </span>
         </>
       );
     }
   }
   return <h2>{renderStatusMessage()}</h2>;
-};
+ };
 
 export default StatusMessage;

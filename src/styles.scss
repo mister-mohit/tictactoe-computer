@@ -3,11 +3,30 @@ $orange: #ffc72a;
 $blue: #4c43d4;
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: $blue;
   color: #fff;
   padding: 0;
   margin: 0;
+}
+
+.btn-sec {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+
+  .choice-button {
+    font-size: 20px;
+    color: gold;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: ease-in 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 
 button {
@@ -46,7 +65,7 @@ button {
       list-style: none;
       text-align: left;
       &:before {
-        content: '';
+        content: "";
         border-radius: 50%;
         display: inline-block;
         height: 5px;
@@ -57,7 +76,7 @@ button {
       }
 
       .btn-move {
-    	  color: #fff;
+        color: #fff;
         &.active {
           font-weight: bold;
           color: $green;
@@ -68,12 +87,12 @@ button {
 }
 
 .status-message {
-	margin-bottom: 30px;
-	font-size: 1.2rem;
-	font-weight: lighter;
-	span {
-	  font-weight: normal;
-	}
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  span {
+    font-weight: normal;
+  }
 }
 
 .btn-reset {
@@ -111,19 +130,19 @@ button {
         border-right: none;
       }
       &.winning {
-	    animation: scaleText 1.4s infinite;
-	    @keyframes scaleText {
-	      0% {
-	        transform: 2.5rem;
-	      }
-	      50% {
-	        font-size: 3.5rem;
-	      }
-	      100% {
-	        font-size: 2.5rem;
-	      }
-	    }
-	  }
+        animation: scaleText 1.4s infinite;
+        @keyframes scaleText {
+          0% {
+            transform: 2.5rem;
+          }
+          50% {
+            font-size: 3.5rem;
+          }
+          100% {
+            font-size: 2.5rem;
+          }
+        }
+      }
     }
   }
 }
@@ -139,7 +158,7 @@ button {
 
   &:before,
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 150px;
     height: 150px;
