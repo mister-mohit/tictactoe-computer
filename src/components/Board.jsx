@@ -3,10 +3,18 @@
 
 import Square from "./Square";
 
-const Board = ({ square, handleClick }) => {
-  const renderSquare = (position) => (
-    <Square value={square[position]} onClick={() => handleClick(position)} />
-  );
+const Board = ({ square, handleClick, winnerList = [] }) => {
+  const renderSquare = (position) => {
+    const isWinningSquare = winnerList.includes(position);
+
+    return (
+      <Square
+        value={square[position]}
+        onClick={() => handleClick(position)}
+        isWinningSquare={isWinningSquare}
+      />
+    );
+  };
 
   return (
     <div className="board">

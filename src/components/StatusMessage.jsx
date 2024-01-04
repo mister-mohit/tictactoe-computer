@@ -6,12 +6,12 @@ const StatusMessage = ({ winner, currentGameState }) => {
   function renderStatusMessage() {
     if (winner) {
       return (
-        <>
+        <div className='winning'>
           Winner is{" "}
           <span className={winner === "X" ? "text-green" : "text-orange"}>
             {winner}
           </span>
-        </>
+        </div>
       );
     } else if (!winner && noMovesLeft) {
       return (

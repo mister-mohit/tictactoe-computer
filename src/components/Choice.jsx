@@ -5,7 +5,7 @@ const Choice = () => {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Choose Mode</h2>
-      <Board square={choicesquares} className="board" />
+      <Board square={choicesquares} />
     </div>
   );
 };

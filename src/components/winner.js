@@ -14,10 +14,10 @@ const winnerCheck = function (squares) {
   for (var i = 0; i < list.length; i++) {
     const [a, b, c] = list[i];
     if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
-      return squares[a];
+      return { winner: squares[a], winnerList: list[i] };
     }
   }
-  return null;
+  return ({ winner: null, winnerList: [] });
 };
 
 export default winnerCheck;

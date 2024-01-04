@@ -7,7 +7,7 @@ import winnerCheck from "./components/winner";
 import StatusMessage from "./components/StatusMessage";
 import Choice from "./components/Choice";
 import Button from "./components/Button";
-const NEW_GAME = [{squares: Array(9).fill(null), isXCurrent: false}]
+const NEW_GAME = [{ squares: Array(9).fill(null), isXCurrent: false }];
 
 function App() {
   const [history, setHistory] = useState([
@@ -21,9 +21,11 @@ function App() {
   const [isComputer, setIsComputer] = useState(false);
   const [isGameStart, setIsGameStart] = useState(false);
   const currentGameState = history[currentMove];
-  const winner = winnerCheck(currentGameState.squares);
+  const { winner, winnerList } = winnerCheck(currentGameState.squares);
+  console.log(winner);
+  console.log(winnerList);
 
-  const handleMove = (move) =>{
+  const handleMove = (move) => {
     setCurrentMove(move);
   };
 
@@ -39,12 +41,13 @@ function App() {
     if (currentGameState.squares[clickedPosition] || winner) {
       return;
     }
-  
-    const isTraversing = ((currentMove + 1) !== history.length) ? true : false;
-    
+
+    const isTraversing = currentMove + 1 !== history.length ? true : false;
 
     setHistory((currentHistory) => {
-      const lastGamingState = isTraversing ? currentHistory[currentMove] : history[currentHistory.length - 1];
+      const lastGamingState = isTraversing
+        ? currentHistory[currentMove]
+        : history[currentHistory.length - 1];
       const nextGamingState = lastGamingState.squares.map(
         (squareVal, position) => {
           if (clickedPosition === position) {
@@ -54,11 +57,14 @@ function App() {
         }
       );
 
-      const base = isTraversing ? currentHistory.slice(0, currentMove + 1) : currentHistory;
+      const base = isTraversing
+        ? currentHistory.slice(0, currentMove + 1)
+        : currentHistory;
+
       return base.concat({
         squares: nextGamingState,
-        isXCurrent: !lastGamingState.isXCurrent
-      })
+        isXCurrent: !lastGamingState.isXCurrent,
+      });
     });
 
     setCurrentMove((move) => move + 1);
@@ -84,7 +90,7 @@ function App() {
     handleClick(indexesLeft[randomNumber]);
   }
 
-  function resetGame(){
+  function resetGame() {
     setHistory(NEW_GAME);
     setCurrentMove(0);
   }
@@ -97,19 +103,24 @@ function App() {
             winner={winner}
             currentGameState={history[currentMove]}
           />
+
           <Board
             square={currentGameState.squares}
             handleClick={handleClick}
-            isComputerTurn={isComputerTurn}
+            winnerList={winnerList}
           />
-          <button type="button" className={
-            `btn-reset ${currentMove > 0 ? 'active' : ''}`
-          } onClick={resetGame} >Start New Game</button>
-          <History history={history} handleMove={handleMove}/>
+          <button
+            type="button"
+            className={`btn-reset ${currentMove > 0 ? "active" : ""}`}
+            onClick={resetGame}
+          >
+            Start New Game
+          </button>
+          <History history={history} handleMove={handleMove} />
         </>
       ) : (
         <>
-          <Choice />
+          {/* <Choice /> */}
           <Button handlePlayer={handlePlayer} />
         </>
       )}
